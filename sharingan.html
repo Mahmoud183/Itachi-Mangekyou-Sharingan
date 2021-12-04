@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Sharingan</title>
+
+    <link rel="shortcut icon" href="" type="image/x-icon">
+    <link rel="apple-touch-icon" href="">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <!-- Link to your css file -->
+    <link rel="stylesheet" href="">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+    <!-- Start coding here -->
+
+    <style>
+        :root {
+            --sharingan-size: 400px;
+            --black: #000;
+            --red: hsl(0, 100%, 36%);
+            --normal-color: hsl(0, 0%, 25%);
+            --border-width: calc(var(--sharingan-size) / 30);
+            --iris-size: calc(var(--sharingan-size) / 2);
+            --tomoe-size: calc(var(--sharingan-size) / 6.5);
+            --pupil-size: calc(var(--sharingan-size) / 5);
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            display: flex;
+            width: 100%;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background: #222;
+        }
+
+        .sharingan {
+            width: var(--sharingan-size);
+            height: var(--sharingan-size);
+            border: var(--border-width) solid var(--black);
+            border-radius: 50%;
+            background: var(--red);
+            box-shadow: 0 0 100px 10px var(--black) inset;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pupil2,
+        .pupil {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: var(--pupil-size);
+            height: var(--pupil-size);
+            background: var(--black);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 100px 10px var(--black);
+        }
+
+        .iris {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: var(--iris-size);
+            height: var(--iris-size);
+            transform: translate(-50%, -50%);
+            border: 1px solid var(--black);
+            border-radius: 50%;
+        }
+
+        .tomoes {
+            height: 100%;
+            width: 100%;
+            cursor: pointer;
+
+        }
+
+        .tomoes:hover {
+            -webkit-animation: spin 4s linear infinite;
+            -moz-animation: spin 4s linear infinite;
+            animation: spin 4s linear infinite;
+        }
+
+        @-moz-keyframes spin {
+            100% {
+                -moz-transform: rotate(360deg);
+            }
+        }
+
+        @-webkit-keyframes spin {
+            100% {
+                -webkit-transform: rotate(360deg);
+            }
+        }
+
+        @keyframes spin {
+            100% {
+                -webkit-transform: rotate(360deg);
+                transform: rotate(360deg);
+            }
+        }
+
+
+
+
+        .tomoe-area {
+            position: absolute;
+            width: var(--iris-size);
+            height: var(--iris-size);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .tomoe {
+            width: var(--tomoe-size);
+            height: var(--tomoe-size);
+            position: absolute;
+            background-color: var(--black);
+            border-radius: 50%;
+            left: 50%;
+            top: -16.6%;
+            transform: translate(-50%);
+            transition: all 2s ease-in-out;
+
+
+        }
+
+        .tomoe::before {
+            content: '';
+            position: absolute;
+            top: -30.3%;
+            left: 3.1%;
+            width: calc(var(--tomoe-size) * 1.51);
+            height: calc(var(--tomoe-size) * 1.69);
+            border-radius: 50%;
+            border-top: calc(var(--tomoe-size) / 2.6) solid var(--black);
+            border-left: calc(var(--tomoe-size) / 9.7) solid transparent;
+            transform: rotate(-35deg);
+            transition: all 2s ease-in-out;
+
+
+
+        }
+
+        .tomoes:hover .tomoe {
+            top: 60px;
+        }
+
+        .tomoes:hover .tomoe::before {
+            position: absolute;
+            top: -117%;
+            left: 3.1%;
+            width: 245px;
+            height: 250px;
+            border-radius: 50%;
+            border-top: 50px solid black;
+            border-left: calc(var(--tomoe-size) / 4) solid #c13e3e00;
+            transform: rotate(-35deg);
+
+
+        }
+
+        .pupil2 {
+            box-shadow: none;
+            transition: all 2s ease-in-out;
+
+        }
+
+        .sharingan:hover .pupil2 {
+            box-shadow: none;
+            position: absolute;
+            z-index: 99999999;
+            background-color: #970000;
+            width: calc(var(--pupil-size) / 2);
+            height: calc(var(--pupil-size) / 2);
+            pointer-events: none;
+
+        }
+
+        .tomoe-area:first-child {
+            transform: translate(-50%, -50%);
+        }
+
+        .tomoe-area:nth-child(2) {
+            transform: translate(-50%, -50%) rotate(120deg);
+        }
+
+        .tomoe-area:nth-child(3) {
+            transform: translate(-50%, -50%) rotate(-120deg);
+        }
+
+        #Audio {
+            display: none;
+        }
+    </style>
+
+
+    <audio id='mySound' src='sharingan.ogg'></audio>
+    <audio id='mySound2' src='sharingan2.ogg'></audio>
+    <div class="sharingan">
+        <div class="pupil"></div>
+        <div class="pupil2"></div>
+        <div class="iris"></div>
+        <div class="tomoes">
+            <div class="tomoe-area">
+
+                <div class="tomoe"></div>
+            </div>
+            <div class="tomoe-area">
+                <div class="tomoe"></div>
+            </div>
+            <div class="tomoe-area">
+                <div class="tomoe"></div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Coding End -->
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        function PlaySound(soundobj) {
+            var thissound = document.getElementById(soundobj);
+            thissound.play();
+        }
+
+        function StopSound(soundobj) {
+            var thissound = document.getElementById(soundobj);
+            thissound.pause();
+            thissound.currentTime = 0;
+        }
+        $(document).on('click', '.sharingan', function () {
+            PlaySound('mySound');
+        })
+        $(document).on('click', 'body', function (e) {
+            console.log(e.target);
+            PlaySound('mySound2');
+        })
+    </script>
+</body>
+
+</html>
